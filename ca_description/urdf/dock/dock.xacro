@@ -19,20 +19,20 @@
     </link>
     <link name='base'>
       <visual name='visual'>
-        <origin xyz="0 ${width/2 - width/6} ${-(width * 2/3)/2}" rpy="0 0 0" />
+        <origin xyz="0 ${width/2 - width/6} ${-(width * 2/3)/2}" />
         <geometry>
           <box size="${width} ${width} 0.01"/>
         </geometry>
       </visual>
       <collision name='collision'>
-        <origin xyz="0 ${width/2 - width/6} ${-(width * 2/3)/2}" rpy="0 0 0" />
+        <origin xyz="0 ${width/2 - width/6} ${-(width * 2/3)/2}" />
         <geometry>
           <box size="${width} ${width} 0.01"/>
         </geometry>
       </collision>
       <xacro:inertial_cuboid_with_pose mass="0.05" x_length="${width}"
           y_length="${width}" z_length="0.01" >
-        <origin xyz="0 ${width/2 - width/6} ${-(width * 2/3)/2}" rpy="0 0 0" />
+        <origin xyz="0 ${width/2 - width/6} ${-(width * 2/3)/2}" />
       </xacro:inertial_cuboid_with_pose>
     </link>
     <joint name='glue' type='fixed'>
