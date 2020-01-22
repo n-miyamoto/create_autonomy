@@ -996,7 +996,7 @@
       <pose frame=''>6.42455 0.596341 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
-          <mass>1</mass>
+          <mass>5</mass>
           <inertia>
             <ixx>0.166667</ixx>
             <ixy>0</ixy>
@@ -1010,22 +1010,22 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>1 1 1</size>
+              <size>1 1 0.5</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
+              <friction>
+                <ode>
+                  <mu>0.7</mu>
+                  <mu2>0.7</mu2>
+                </ode>
+              </friction>
+              <bounce/>
+              <contact>
                 <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
+              </contact>
+            </surface>
         </collision>
         <visual name='visual'>
           <geometry>
