@@ -4,20 +4,17 @@
   <xacro:macro name="dock" params="width">
     <link name='back'>
       <visual name='visual'>
-        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <box size="${width} ${width/3} ${width * 2/3}"/>
         </geometry>
       </visual>
       <collision name='collision'>
-        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <box size="${width} ${width/3} ${width * 2/3}"/>
         </geometry>
       </collision>
       <xacro:inertial_cuboid_with_pose mass="0.15" x_length="${width}"
           y_length="${width/3}" z_length="${width * 2/3}" >
-        <origin xyz="0 0 0" />
       </xacro:inertial_cuboid_with_pose>
     </link>
     <link name='base'>
