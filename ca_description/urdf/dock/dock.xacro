@@ -15,9 +15,10 @@
       </collision>
       <xacro:inertial_cuboid_with_pose mass="0.15" x_length="${width}"
           y_length="${width/3}" z_length="${width * 2/3}" >
+        <origin xyz="0 0 0" />
       </xacro:inertial_cuboid_with_pose>
     </link>
-    <link name='base'>
+    <link name='link'>
       <visual name='visual'>
         <origin xyz="0 ${width/2 - width/6} ${-(width * 2/3)/2}" />
         <geometry>
@@ -37,8 +38,11 @@
     </link>
     <joint name='glue' type='fixed'>
       <parent link="back" />
-      <child link="base" />
+      <child link="link" />
     </joint>
+    <!-- <gazebo>
+      <plugin name="model_pose_publisher_plugin" filename="libmodel_pose_publisher_plugin.so"/>
+    </gazebo> -->
   </xacro:macro>
   <xacro:dock width="0.15">
   </xacro:dock>
