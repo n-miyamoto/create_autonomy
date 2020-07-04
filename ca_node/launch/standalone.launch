@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="nodelet" type="nodelet" name="create_driver"
+        args="load ca_node/CreateNodelet nodelet_manager">
+    <rosparam command="load" file="$(find ca_driver)/config/default.yaml"/>
+  </node>
+</launch>
