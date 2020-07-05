@@ -14,10 +14,12 @@
 
 #include <ros/ros.h>
 
-class Create2Interface : public hardware_interface::RobotHW {
+class Create2Interface
+  : public hardware_interface::RobotHW {
 public:
   Create2Interface(ros::NodeHandle &nh)
-      : priv_nh_(nh), model_(create::RobotModel::CREATE_2) {
+      : priv_nh_(nh)
+      , model_(create::RobotModel::CREATE_2) {
 
     hardware_interface::JointStateHandle state_handle_a(
         "wheel_left_joint", &pos[0], &vel[0], &eff[0]);
@@ -62,11 +64,15 @@ public:
                         cmd[1] * (model_.getWheelDiameter()));
   }
 
-  void read() {
-    pos[0] =
-        robot_->getLeftWheelTotalDistance() / (model_.getWheelDiameter() / 2);
-    pos[1] =
-        robot_->getRightWheelTotalDistance() / (model_.getWheelDiameter() / 2);
+  void read(const ros::Duration &period) {
+    const double ang_distance_left =
+      robot_->getLeftWheelCurrentDistance() / (model_.getWheelDiameter() / 2.0);
+    const double ang_distance_right =
+      robot_->getRightWheelCurrentDistance() / (model_.getWheelDiameter() / 2.0);
+    pos[0] += ang_distance_left;
+    vel[0] += ang_distance_left / period.toSec();
+    pos[1] += ang_distance_right;
+    vel[1] += ang_distance_right / period.toSec();
   }
 
   ros::Time get_time() { return ros::Time::now(); }
