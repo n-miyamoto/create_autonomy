@@ -33,7 +33,7 @@
            to="mobile_base/sensors/bumper_pointcloud"/> -->
 
     <remap from="odom" to="odom_combined"/>
-    <remap from="cmd_vel" to="cmd_vel/nav"/>
+    <remap from="cmd_vel" to="cmd_vel/out"/>
 
     <!-- Remap frames for specific robots -->
     <param name="local_costmap/robot_base_frame" value="$(arg robot_frame)"/>

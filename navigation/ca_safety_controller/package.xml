@@ -6,7 +6,7 @@
 
     The SafetyController keeps track of bumper, cliff and wheel drop events. In case of the first two,
     Create is commanded to move back. In the latter case, Create is stopped.
-    
+
     This controller can be enabled/disabled.
     The safety states (bumper pressed etc.) can be reset. WARNING: Dangerous!
   </description>
@@ -37,7 +37,8 @@
   <run_depend>roscpp</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>yocs_controllers</run_depend>
-  
+  <run_depend>yocs_velocity_smoother</run_depend>
+
   <export>
     <nodelet plugin="${prefix}/plugins/nodelet_plugins.xml"/>
   </export>
