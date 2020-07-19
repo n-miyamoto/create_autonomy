@@ -75,4 +75,13 @@
     <arg name="robot_id" value="$(arg robot_id)"/>
   </include>
 
+  <!-- RTAB-Map -->
+  <include if="$(eval arg('localization')=='rtab')"
+           file="$(find ca_slam)/launch/rtab.launch">
+    <arg name="robot_id"      value="$(arg robot_id)"/>
+    <arg name="rgbd_odometry" value="false"/>
+    <arg name="rtabmapviz"    value="false"/>
+    <arg name="localization"    value="false"/>
+  </include>
+
 </launch>
