@@ -23,6 +23,7 @@ ros-*-move-base-flex
 ros-*-openni2-launch
 ros-*-robot-localization
 ros-*-rplidar-ros
+ros-*-rtabmap-ros
 ros-*-sbpl-lattice-planner
 ros-*-slam-gmapping
 ros-*-smach-viewer
