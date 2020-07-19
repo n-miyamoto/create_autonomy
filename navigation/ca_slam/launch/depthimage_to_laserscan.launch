@@ -7,7 +7,9 @@
 
   <group if="$(eval arg('laser')!='rplidar')">
     <!-- push depthimage_to_laserscan nodelet into sensor's nodelet manager-->
-    <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan" output="screen" ns="$(arg laser)" args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet $(arg laser)_nodelet_manager">
+    <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan"
+          output="screen" ns="$(arg laser)"
+          args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet nodelet_manager">
       <remap from="image" to="depth/image_raw"/>
       <remap from="camera_info" to="depth/camera_info"/>
       <remap from="scan" to="scan"/>
