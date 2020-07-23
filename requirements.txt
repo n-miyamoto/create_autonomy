@@ -1,0 +1,5 @@
+future
+protobuf
+scikit-image
+torch
+torchvision

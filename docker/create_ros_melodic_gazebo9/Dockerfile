@@ -75,4 +75,8 @@ RUN apt-get update && \
     xargs -a ${DEPS_FILE} apt-get install -y
 RUN rm ${DEPS_FILE}
 
+# Deps for semantic SLAM
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
 USER $USER

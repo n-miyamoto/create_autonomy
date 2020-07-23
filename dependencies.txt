@@ -1,3 +1,4 @@
+libglew-dev
 python-catkin-lint
 
 ros-*-amcl
@@ -20,6 +21,7 @@ ros-*-joy-teleop
 ros-*-map-server
 ros-*-move-base
 ros-*-move-base-flex
+ros-*-octomap-rviz-plugins
 ros-*-openni2-launch
 ros-*-robot-localization
 ros-*-rplidar-ros

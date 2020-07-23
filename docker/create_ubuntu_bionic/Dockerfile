@@ -1,4 +1,9 @@
-FROM ubuntu:18.04
+ARG UBUNTU_VERSION=18.04
+# https://hub.docker.com/r/nvidia/cudagl
+ARG ARCH=gl
+ARG CUDA=10.2
+FROM nvidia/cuda${ARCH}:${CUDA}-base-ubuntu${UBUNTU_VERSION} as base
+# FROM nvidia/cuda:${CUDA}-cudnn8-runtime-ubuntu${UBUNTU_VERSION} as base
 ARG uid
 LABEL maintainer="Emiliano Borghi"
 
