@@ -38,3 +38,19 @@ This package wraps the C++ library [libcreate][libcreate], which uses iRobot's [
 https://github.com/yubaoliu/semantic_slam_floatlazer
 
 https://github.com/appliedAI-Initiative/orb_slam_2_ros
+
+```bash
+GUI=false RVIZ=true LASER=astra LOCALIZATION=semantic_mapping roslaunch ca_gazebo create_sweet_house_3.launch
+```
+
+# Further steps
+
+http://wiki.ros.org/pcl_ros/Tutorials/SACSegmentationFromNormals%20planar%20segmentation
+
+http://wiki.ros.org/srs_env_model_percp
+
+https://github.com/jupidity/PCL-ROS-cluster-Segmentation
+
+http://bat.sjtu.edu.cn/wp-content/uploads/2018/05/59-Real-Time-Plane-Segmentation-in-a-ROS-based-Navigation-System-for-the-Visually-Impaired.pdf
+
+https://github.com/NVIDIA-AI-IOT/Foresee-Navigation/tree/master/ros_workspace/src/deep_segmentation#using-the-model-to-navigate

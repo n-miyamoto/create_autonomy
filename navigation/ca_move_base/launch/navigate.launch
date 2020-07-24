@@ -75,4 +75,10 @@
     <arg name="robot_id" value="$(arg robot_id)"/>
   </include>
 
+  <!-- Semantic Mapping -->
+  <include if="$(eval arg('localization')=='semantic_mapping')"
+           file="$(find ca_semantic_slam)/launch/semantic_mapping.launch">
+    <arg name="robot_id" value="$(arg robot_id)"/>
+  </include>
+
 </launch>
