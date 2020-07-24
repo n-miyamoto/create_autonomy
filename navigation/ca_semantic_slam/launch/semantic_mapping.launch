@@ -1,0 +1,27 @@
+<launch>
+  <arg name="robot_id"  default="$(optenv ID 1)"      doc="Unique identifier of the robot [1-Inf.)"/>
+  <arg name="ns"        value="create$(arg robot_id)" doc="Namespace of the robot. By default: create1"/>
+  <arg name="tf_prefix" value="$(arg ns)_tf"          doc="Tf prefix"/>
+
+  <arg name="laser" default="$(optenv LASER rplidar)" doc="Laser for mapping the environment"/>
+
+  <!-- https://github.com/yubaoliu/semantic_slam_floatlazer/blob/master/semantic_slam/launch/semantic_mapping.launch -->
+
+  <param name="semantic_pcl/depth_image_topic" value="$(arg laser)/depth_registered/image_raw"/>
+  <param name="semantic_pcl/color_image_topic" value="$(arg laser)/rgb/image_rect_color"/>
+
+  <param name="semantic_pcl/frame_id" value="$(arg tf_prefix)/$(arg laser)_rgb_optical_frame"/>
+  <param name="semantic_pcl/model_path" value="$(find floatlazer_semantic_cloud)/dataset/model/pspnet_50_ade20k.pth"/>
+
+  <rosparam file="$(find floatlazer_semantic_slam)/params/semantic_cloud.yaml" command="load"/>
+  <node pkg="floatlazer_semantic_cloud" type="semantic_cloud.py" name="semantic_cloud" output="screen"/>
+
+  <!-- Octomap -->
+  <rosparam file="$(find floatlazer_semantic_slam)/params/octomap_generator.yaml" command="load"/>
+  <node pkg="floatlazer_octomap_generator" type="octomap_generator" name="octomap_generator" output="screen"/>
+
+  <include file="$(find ca_move_base)/launch/octomap_mapping.launch"/>
+
+  <!-- ORB_SLAM2 RGBD -->
+  <!-- <include file="$(find ca_semantic_slam)/launch/orb_slam2.launch"/> -->
+</launch>
