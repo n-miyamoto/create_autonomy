@@ -32,6 +32,7 @@ set(SERVICESIM_PLUGIN_LIST
 )
 
 set(PLUGIN_LIST
+  battery_charger_plugin
   cliff_msg_publisher
   create_bumper_plugin
   create_cliff_plugin

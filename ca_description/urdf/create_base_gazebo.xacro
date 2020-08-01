@@ -50,6 +50,10 @@
         <xyzOffset>0 0 0</xyzOffset>
         <rpyOffset>0 0 0</rpyOffset>
       </plugin>
+
+      <plugin name="battery_charger_plugin" filename="libbattery_charger_plugin.so">
+      </plugin>
+
     </gazebo>
 
     <!-- Virtual Wall detector -->

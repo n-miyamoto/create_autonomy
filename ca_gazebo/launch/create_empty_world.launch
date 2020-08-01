@@ -30,4 +30,8 @@
     <arg name="env"          value="$(arg env)"/>
 	</include>
 
+	<!-- Spawn dock -->
+	<include file="$(find ca_description)/launch/spawn_dock.launch">
+		<arg name="name" value="$(optenv DOCK_NAME dock)" />
+	</include>
 </launch>
