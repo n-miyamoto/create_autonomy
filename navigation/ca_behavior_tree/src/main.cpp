@@ -24,7 +24,8 @@ int main(int argc, char **argv) {
   BT::BehaviorTreeFactory factory;
 
   factory.registerNodeType<MoveBase>("MoveBase");
-  factory.registerSimpleCondition("CheckBattery", CheckBattery, {BT::InputPort<int>("wait_tick")});
+  factory.registerNodeType<BatteryCharging>("BatteryCharging");
+  // factory.registerSimpleCondition("CheckBattery", CheckBattery, {BT::InputPort<int>("wait_tick")});
 
   // Trees are created at deployment-time (i.e. at run-time, but only once at
   // the beginning). The currently supported format is XML. IMPORTANT: when the

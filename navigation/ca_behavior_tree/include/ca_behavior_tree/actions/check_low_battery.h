@@ -1,34 +1,31 @@
 #pragma once
 
+#include <memory>
+
 #include <behaviortree_cpp_v3/action_node.h>
-#include <behaviortree_cpp_v3/behavior_tree.h>
 #include <behaviortree_cpp_v3/bt_factory.h>
 
+#include <ros/ros.h>
+#include <sensor_msgs/BatteryState.h>
 
-/*
- * TODO: REPLACE BY THIS APPROACH
- *
- * https://github.com/AndreasZachariae/PeTRA/blob/3aeb742b5b95c441a681997961334f5465494294/petra_central_control/src/conditions/CheckBattery.cpp
- */
 
-int wait_tick = -1;
-
-BT::NodeStatus CheckBattery(BT::TreeNode &self)
+class BatteryCharging : public BT::SyncActionNode
 {
-    static int count = 0;
-    if (wait_tick == -1) {
-        if (!self.getInput<int>("wait_tick", wait_tick)) {
-            wait_tick = 100;
-        }
-	    count = wait_tick;
-        printf("wait_tick: %d\n", wait_tick);
-    }
-    count--;
-    if (count <= 0) {
-        printf("Out of battery!!!!!\n");
-        return BT::NodeStatus::FAILURE;
-    } else {
-        printf("Low Power Countdown: %d\n", count);
-        return BT::NodeStatus::SUCCESS;
-    }
-}
+public:
+    static BT::PortsList providedPorts() { return BT::PortsList(); }
+
+    BatteryCharging(const std::string &name, const BT::NodeConfiguration &config);
+
+    BT::NodeStatus tick() override;
+    // BT::NodeStatus onStart() override;
+    // BT::NodeStatus onRunning() override;
+    // void onHalted() override;
+
+private:
+    double battery_percentage_;
+    double low_percentage_;
+
+    // The node that will be used for any ROS operations
+    std::shared_ptr<ros::NodeHandle> nh_;
+    ros::Subscriber sub_;
+};

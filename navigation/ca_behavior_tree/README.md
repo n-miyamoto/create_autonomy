@@ -4,7 +4,8 @@ https://www.behaviortree.dev/
 https://github.com/zmunro/BehaviorTree/blob/master/problem_specification.pdf
 https://github.com/RoboticaUtnFrba/create_autonomy/issues/164
 <!-- NavigationModeSelector -->
-https://github.com/AndreasZachariae/PeTRA/blob/3aeb742b5b95c441a681997961334f5465494294/petra_central_control/src/actions/SkillSelection.cpp
+https://github.com/AndreasZachariae/PeTRA/blob/PeTRAv2/petra_central_control/src/actions/SkillSelection.cpp
+https://github.com/AndreasZachariae/PeTRA/blob/PeTRAv2/petra_central_control/include/petra_central_control/controls/SwitchNode.h
 
 ```bash
 rosrun groot Groot

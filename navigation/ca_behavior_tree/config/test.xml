@@ -6,14 +6,12 @@
     <BehaviorTree ID="BehaviorTree">
         <Parallel threshold="2">
             <Action ID="MoveBase" robot="create1" goal="Goal_a" name="patrol"/>
-            <Action ID="CheckBattery" wait_tick="300"/>
+            <Action ID="BatteryCharging"/>
         </Parallel>
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
-        <Action ID="CheckBattery">
-            <input_port default="1000" name="wait_tick">Ticks to wait</input_port>
-        </Action>
+        <Action ID="CheckBattery"/>
         <Action ID="ManualMode">
             <input_port default="False" name="is_autonomy"/>
         </Action>
