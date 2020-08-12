@@ -1,6 +1,7 @@
 python-catkin-lint
 
 ros-*-amcl
+ros-*-behaviortree-cpp-v3
 ros-*-camera-calibration
 ros-*-carrot-planner
 ros-*-controller-manager

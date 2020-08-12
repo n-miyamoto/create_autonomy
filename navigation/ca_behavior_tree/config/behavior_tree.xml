@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Sequence name="Application">
+            <Parallel name="keep_alive" threshold="">
+                <Condition ID="CheckBattery" name="check_battery"/>
+                <Control ID="BehaviorSelector" is_autonomy="True">
+                    <Sequence>
+                        <Action ID="MoveBaseAction" name="patrol"/>
+                        <Action ID="MoveBaseAction" name="patrol"/>
+                        <Action ID="MoveBaseAction" name="patrol"/>
+                    </Sequence>
+                    <Action ID="ManualMode" is_autonomy="False"/>
+                </Control>
+            </Parallel>
+            <Sequence name="Docking">
+                <Action ID="MoveBaseAction" name="move_to_docking_station"/>
+                <Action ID="BatteryCharging"/>
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="BatteryCharging"/>
+        <Condition ID="BatteryLevel"/>
+        <Control ID="BehaviorSelector">
+            <output_port default="True" name="is_autonomy">True if the robot moves autonomously</output_port>
+        </Control>
+        <Condition ID="CheckBattery"/>
+        <Action ID="ManualMode">
+            <input_port default="False" name="is_autonomy"/>
+        </Action>
+        <Action ID="MoveBaseAction"/>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>
+

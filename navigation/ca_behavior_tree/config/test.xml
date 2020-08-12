@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <SetBlackboard output_key="Goal_a" value="-6.432;3.35;0.000" />
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Parallel threshold="2">
+            <Action ID="MoveBase" robot="create1" goal="Goal_a" name="patrol"/>
+            <Action ID="CheckBattery" wait_tick="300"/>
+        </Parallel>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="CheckBattery">
+            <input_port default="1000" name="wait_tick">Ticks to wait</input_port>
+        </Action>
+        <Action ID="ManualMode">
+            <input_port default="False" name="is_autonomy"/>
+        </Action>
+        <Action ID="MoveBase">
+            <input_port default="0.0;0.0;0.0" name="goal">Goal pose</input_port>
+            <input_port default="create" name="robot">Robot Name</input_port>
+        </Action>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>
+
