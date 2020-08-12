@@ -6,7 +6,7 @@
 #include <behaviortree_cpp_v3/bt_factory.h>
 
 #include <ros/ros.h>
-#include <sensor_msgs/BatteryState.h>
+#include <std_msgs/Float64.h>
 
 
 class BatteryCharging : public BT::SyncActionNode

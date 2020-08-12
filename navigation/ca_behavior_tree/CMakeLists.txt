@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   move_base_msgs
   roscpp
   roslint
+  std_msgs
 )
 
 catkin_package(
@@ -24,6 +25,7 @@ catkin_package(
     behaviortree_cpp_v3
     move_base_msgs
     roscpp
+    std_msgs
 )
 
 include_directories(

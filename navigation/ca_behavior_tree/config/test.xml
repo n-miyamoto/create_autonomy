@@ -1,16 +1,15 @@
 <?xml version="1.0"?>
 <root main_tree_to_execute="BehaviorTree">
     <!-- ////////// -->
-    <SetBlackboard output_key="Goal_a" value="-6.432;3.35;0.000" />
-    <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Parallel threshold="2">
-            <Action ID="MoveBase" robot="create1" goal="Goal_a" name="patrol"/>
+            <Action ID="MoveBase" goal="-6.432;3.35;0.000" name="Patrol" robot="create1"/>
             <Action ID="BatteryCharging"/>
         </Parallel>
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
+        <Action ID="BatteryCharging"/>
         <Action ID="CheckBattery"/>
         <Action ID="ManualMode">
             <input_port default="False" name="is_autonomy"/>

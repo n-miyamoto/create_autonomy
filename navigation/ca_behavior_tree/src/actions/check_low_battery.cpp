@@ -4,13 +4,13 @@
 BatteryCharging::BatteryCharging(const std::string &name, const BT::NodeConfiguration &config)
 : BT::SyncActionNode(name, config)
 , battery_percentage_(100.0)
-, low_percentage_(0.0)
+, low_percentage_(20.0)
 {
     nh_ = std::make_shared<ros::NodeHandle>("~");
-    sub_ = nh_->subscribe<sensor_msgs::BatteryState>(
-        "BatteryState", 10,
-        [&](sensor_msgs::BatteryState::ConstPtr msg) {
-        battery_percentage_ = msg->percentage;
+    sub_ = nh_->subscribe<std_msgs::Float64>(
+        "/battery/battery_remaining", 1,
+        [&](std_msgs::Float64::ConstPtr msg) {
+        battery_percentage_ = msg->data * 100.0;
     });
 }
 
