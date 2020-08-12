@@ -2,15 +2,18 @@
 <root main_tree_to_execute="BehaviorTree">
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
-        <Parallel threshold="2">
-            <Action ID="MoveBase" goal="-6.432;3.35;0.000" name="Patrol" robot="create1"/>
+        <ReactiveSequence>
+            <SequenceStar>
+                <Action ID="MoveBase" goal="-6.432;3.35;0.000" name="Patrol" robot="create1"/>
+                <Action ID="MoveBase" goal="6.5;-1.0;0.0" name="Patrol" robot="create1"/>
+                <Action ID="MoveBase" goal="1.0;3.0;-1.5708" name="Patrol" robot="create1"/>
+            </SequenceStar>
             <Action ID="BatteryCharging"/>
-        </Parallel>
+        </ReactiveSequence>
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
         <Action ID="BatteryCharging"/>
-        <Action ID="CheckBattery"/>
         <Action ID="ManualMode">
             <input_port default="False" name="is_autonomy"/>
         </Action>
